@@ -1,0 +1,8 @@
+{
+  "name": "mern-example-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:yale-swe/mern-example-app.git",
+  "author": "wu-json",
+  "license": "MIT"
+}
