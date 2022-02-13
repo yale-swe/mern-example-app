@@ -1,7 +1,19 @@
+import axios from "axios";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { Doggo } from "./types";
 import SWELogo from "./assets/logo.png";
 
 const App = () => {
+  const [doggos, setDoggos] = useState<Doggo[]>([]);
+
+  useEffect(() => {
+    axios.get<{ doggos: Doggo[] }>("http://localhost:4000/doggo").then((res) => {
+      console.log(res)
+      setDoggos(res.data.doggos);
+    });
+  }, []);
+
   return (
     <Container>
       <Description>
