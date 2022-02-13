@@ -16,7 +16,7 @@ router.post("/", async (req: Request, res: Response) => {
     age,
     imageUrl: randomDogeImage(),
   });
-  res.send({
+  res.status(201).send({
     doggo,
   });
 });

@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import app from "./app";
-import routes from "./routes";
 
 const port = process.env.PORT || 4000;
 const mongoUri =
@@ -10,7 +9,7 @@ const mongoUri =
 const startApp = async () => {
   try {
     await mongoose.connect(mongoUri);
-    app.use(routes).listen(port, () => {
+    app.listen(port, () => {
       console.log(`Server is ready at: localhost:${port} 🐶`);
     });
   } catch (e) {

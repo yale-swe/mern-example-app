@@ -6,6 +6,8 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "esModuleInterop": true,
-    "outDir": "build"
-  }
+    "outDir": "build",
+    "types": ["jest", "node"]
+  },
+  "exclude": ["node_modules/**/*", "build/**/*"]
 }
