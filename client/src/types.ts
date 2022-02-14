@@ -1,6 +1,6 @@
 export type Doggo = {
   _id: string;
   name: string;
-  age: string;
+  age: number;
   imageUrl: string;
 };
