@@ -6,6 +6,7 @@ on:
     branches: [main]
 env:
   NODE_ENV: ci
+  CI: true
 jobs:
   test-and-build-client:
     name: Test & Build Client
@@ -14,32 +15,36 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: Install Dependencies
-        run: cd client && yarn
+        run: yarn install:client
       - name: Run Tests
-        run: yarn test
+        run: yarn test:client
       - name: Build
-        run: yarn build
+        run: yarn build:client
 
   test-and-build-server:
     name: Test & Build Server
     runs-on: ubuntu-latest
-    docker:
+    container: node:16.13.2
+    services:
       mongodb:
         image: mongo:5.0.6
-        container_name: mongodb
-        restart: unless-stopped
-        environment:
-          - MONGO_INITDB_ROOT_USERNAME=user
-          - MONGO_INITDB_ROOT_PASSWORD=pass
-          - MONGO_INITDB_DATABASE=mydatabase
+        env:
+          MONGO_INITDB_ROOT_USERNAME: user
+          MONGO_INITDB_ROOT_PASSWORD: pass
+          MONGO_INITDB_DATABASE: mydatabase
         ports:
           - 27017:27017
     steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16.14"
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: Install Dependencies
-        run: cd server && yarn
+        run: yarn install:server
       - name: Run Tests
-        run: yarn test
+        run: yarn test:server
+        env:
+          MONGO_URI: mongodb://user:pass@mongodb:27017/mydatabase?authSource=admin
       - name: Build
-        run: yarn build
+        run: yarn build:server
