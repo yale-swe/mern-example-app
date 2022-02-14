@@ -24,6 +24,7 @@ jobs:
   test-and-build-server:
     name: Test & Build Server
     runs-on: ubuntu-latest
+    container: node:16.13.2
     services:
       mongodb:
         image: mongo:5.0.6
@@ -34,6 +35,9 @@ jobs:
         ports:
           - 27017:27017
     steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.13.2'
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: Install Dependencies
