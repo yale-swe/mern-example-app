@@ -20,26 +20,26 @@ jobs:
       - name: Build
         run: yarn build:client
 
-  # test-and-build-server:
-  #   name: Test & Build Server
-  #   runs-on: ubuntu-latest
-  #   docker:
-  #     mongodb:
-  #       image: mongo:5.0.6
-  #       container_name: mongodb
-  #       restart: unless-stopped
-  #       environment:
-  #         - MONGO_INITDB_ROOT_USERNAME=user
-  #         - MONGO_INITDB_ROOT_PASSWORD=pass
-  #         - MONGO_INITDB_DATABASE=mydatabase
-  #       ports:
-  #         - 27017:27017
-  #   steps:
-  #     - name: Checkout Repo
-  #       uses: actions/checkout@v2
-  #     - name: Install Dependencies
-  #       run: cd server && yarn
-  #     - name: Run Tests
-  #       run: yarn test
-  #     - name: Build
-  #       run: yarn build
+  test-and-build-server:
+    name: Test & Build Server
+    runs-on: ubuntu-latest
+    docker:
+      mongodb:
+        image: mongo:5.0.6
+        container_name: mongodb
+        restart: unless-stopped
+        environment:
+          - MONGO_INITDB_ROOT_USERNAME=user
+          - MONGO_INITDB_ROOT_PASSWORD=pass
+          - MONGO_INITDB_DATABASE=mydatabase
+        ports:
+          - 27017:27017
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: yarn install:server
+      - name: Run Tests
+        run: yarn test:server
+      - name: Build
+        run: yarn build:server
