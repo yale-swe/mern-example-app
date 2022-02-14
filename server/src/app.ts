@@ -1,12 +1,14 @@
 import cors from "cors";
 import express from "express";
-import { isDevelopment } from "./utils/environment";
+import { isDevelopment, isTest } from "./utils/environment";
 import routes from "./routes";
 
+const bypassCors = isDevelopment() || isTest();
 const allowList = new Set(["http://localhost:3000"]);
+
 const corsOptions = {
   origin: (origin: string, callback: any) => {
-    if (isDevelopment() || allowList.has(origin)) {
+    if (bypassCors || allowList.has(origin)) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));

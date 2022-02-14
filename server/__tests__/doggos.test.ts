@@ -46,4 +46,16 @@ describe("Doggos Tests", () => {
       expect(testDoggos[0]).toBeTruthy();
     });
   });
+
+  describe("Delete Doggo", () => {
+    it("should delete a doggo", async () => {
+      testDoggos = await Doggo.create([
+        { name: "Jett", age: 8, imageUrl: "some-image-url" },
+      ]);
+      const res = await request(app)
+        .delete("/doggo")
+        .send({ id: (testDoggos[0] as any)._id.toString() });
+      expect(res.status).toEqual(200);
+    });
+  });
 });

@@ -21,4 +21,19 @@ router.post("/", async (req: Request, res: Response) => {
   });
 });
 
+router.delete("/", async (req: Request, res: Response) => {
+  const { id } = req.body;
+  if (!id) return res.status(400).send({ message: "Please provide an id." });
+
+  const doggo = await Doggo.findById(id);
+  if (!doggo)
+    return res
+      .status(400)
+      .send({ message: "Doggo with this id does not exist." });
+
+  await doggo.remove();
+
+  res.status(200).send({ message: "Doggo successfully deleted." });
+});
+
 export default router;
