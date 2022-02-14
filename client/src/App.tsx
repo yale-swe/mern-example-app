@@ -46,8 +46,8 @@ const App = () => {
             This is the official MERN stack example for Software Engineering at
             Yale University (CPSC 439/539). The MERN stack stands for MongoDB,
             Express, React, and Node. This project has the minimal setup for the
-            MERN stack, and allows you to create "Doggos" using a backend
-            request to a Node REST API.
+            MERN stack, and allows you to create and release "Doggos" using a
+            backend request to a Node REST API.
           </Text>
         </Description>
         <DoggoForm addDoggo={addDoggo} />
