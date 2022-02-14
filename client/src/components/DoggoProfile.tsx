@@ -1,14 +1,41 @@
+import axios from "axios";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
+import swal from "sweetalert";
+import { useCallback, useState } from "react";
 import { Doggo } from "../types";
 
-const DoggoProfile = ({ doggo }: { doggo: Doggo }) => {
+const DoggoProfile = ({
+  doggo,
+  deleteDoggo,
+}: {
+  doggo: Doggo;
+  deleteDoggo: (id: string) => void;
+}) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const deleteThisDoggo = useCallback(async () => {
+    setLoading(true);
+    try {
+      await axios.delete("http://localhost:4000/doggo", {
+        params: { id: doggo._id },
+      });
+      deleteDoggo(doggo._id);
+      swal(`${doggo.name} has been released! 🐕`);
+    } catch (_e) {
+      swal("Something went wrong...");
+    }
+    setLoading(false);
+  }, [doggo]);
+
   return (
     <Container>
       <ProfileImage src={doggo.imageUrl} alt="doggo-profile-image" />
       <Name>{doggo.name}</Name>
       <Age>age {doggo.age}</Age>
-      <Button color="error">Delete Doggo</Button>
+      <Button color="error" onClick={deleteThisDoggo} disabled={loading}>
+        Release
+      </Button>
     </Container>
   );
 };

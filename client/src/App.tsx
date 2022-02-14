@@ -31,6 +31,11 @@ const App = () => {
     [doggos]
   );
 
+  const deleteDoggo = useCallback(
+    (id: string) => setDoggos(doggos.filter((d) => d._id !== id)),
+    [doggos]
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <Container>
@@ -48,7 +53,7 @@ const App = () => {
         <DoggoForm addDoggo={addDoggo} />
         <DoggosContainer>
           {doggos.map((doggo, i) => (
-            <DoggoProfile doggo={doggo} key={i} />
+            <DoggoProfile doggo={doggo} deleteDoggo={deleteDoggo} key={i} />
           ))}
         </DoggosContainer>
       </Container>

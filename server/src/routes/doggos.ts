@@ -22,7 +22,7 @@ router.post("/", async (req: Request, res: Response) => {
 });
 
 router.delete("/", async (req: Request, res: Response) => {
-  const { id } = req.body;
+  const { id } = req.query;
   if (!id) return res.status(400).send({ message: "Please provide an id." });
 
   const doggo = await Doggo.findById(id);

@@ -24,11 +24,11 @@ const DoggoForm = ({ addDoggo }: { addDoggo: (doggo: Doggo) => void }) => {
         age: parseInt(age),
       });
       addDoggo(data.doggo);
+      swal(`${name} has been created! 🐕`);
     } catch (_e) {
       swal("Something went wrong...");
     }
 
-    swal(`${name} has been created! 🐕`);
     setLoading(false);
     setName("");
     setAge("");

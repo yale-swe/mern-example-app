@@ -53,8 +53,8 @@ describe("Doggos Tests", () => {
         { name: "Jett", age: 8, imageUrl: "some-image-url" },
       ]);
       const res = await request(app)
-        .delete("/doggo")
-        .send({ id: (testDoggos[0] as any)._id.toString() });
+        .del("/doggo")
+        .query({ id: (testDoggos[0] as any)._id.toString() });
       expect(res.status).toEqual(200);
     });
   });
