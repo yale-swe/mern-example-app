@@ -37,12 +37,14 @@ jobs:
     steps:
       - uses: actions/setup-node@v2
         with:
-          node-version: '16.14'
+          node-version: "16.14"
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: Install Dependencies
         run: yarn install:server
       - name: Run Tests
-        run: MONGO_URI=mongodb://user:pass@mongodb:27017/mydatabase?authSource=admin yarn test:server
+        run: yarn test:server
+        env:
+          MONGO_URI: mongodb://user:pass@mongodb:27017/mydatabase?authSource=admin
       - name: Build
         run: yarn build:server
