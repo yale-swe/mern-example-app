@@ -16,7 +16,7 @@ jobs:
       - name: Install Dependencies
         run: cd client && yarn
       - name: Run Tests
-        run: yarn test
+        run: cd client && yarn test
       - name: Build
         run: yarn build
 
