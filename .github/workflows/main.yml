@@ -24,13 +24,14 @@ jobs:
     name: Test & Build Server
     runs-on: ubuntu-latest
     services:
-      image: mongo:5.0.6
-      env:
-        MONGO_INITDB_ROOT_USERNAME: user
-        MONGO_INITDB_ROOT_PASSWORD: pass
-        MONGO_INITDB_DATABASE: mydatabase
-      ports:
-        - 27017:27017
+      mongodb:
+        image: mongo:5.0.6
+        env:
+          MONGO_INITDB_ROOT_USERNAME: user
+          MONGO_INITDB_ROOT_PASSWORD: pass
+          MONGO_INITDB_DATABASE: mydatabase
+        ports:
+          - 27017:27017
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
