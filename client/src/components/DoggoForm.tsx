@@ -4,8 +4,9 @@ import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import { useCallback, useState } from "react";
 import swal from "sweetalert";
+import { Doggo } from "../types";
 
-const DoggoForm = () => {
+const DoggoForm = ({ addDoggo }: { addDoggo: (doggo: Doggo) => void }) => {
   const [name, setName] = useState<string>("");
   const [age, setAge] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -22,9 +23,12 @@ const DoggoForm = () => {
         name,
         age: parseInt(age),
       });
+      addDoggo(data.doggo);
     } catch (_e) {
       swal("Something went wrong...");
     }
+
+    swal(`${name} has been created! 🐕`);
     setLoading(false);
     setName("");
     setAge("");

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Doggo } from "./types";
 import DoggoForm from "./components/DoggoForm";
 import DoggoProfile from "./components/DoggoProfile";
@@ -24,6 +24,13 @@ const App = () => {
       });
   }, []);
 
+  const addDoggo = useCallback(
+    (doggo: Doggo) => {
+      setDoggos([...doggos, doggo]);
+    },
+    [doggos]
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <Container>
@@ -38,7 +45,7 @@ const App = () => {
             request to a Node REST API.
           </Text>
         </Description>
-        <DoggoForm />
+        <DoggoForm addDoggo={addDoggo} />
         <DoggosContainer>
           {doggos.map((doggo, i) => (
             <DoggoProfile doggo={doggo} key={i} />
