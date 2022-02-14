@@ -1,5 +1,5 @@
 module.exports = {
   rootDir: "../../",
   preset: "ts-jest",
-  setupFiles: ["./setup.ts"]
+  setupFiles: ["./src/testUtils/setup.ts"],
 };
