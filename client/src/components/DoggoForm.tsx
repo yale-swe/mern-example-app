@@ -32,7 +32,7 @@ const DoggoForm = ({ addDoggo }: { addDoggo: (doggo: Doggo) => void }) => {
     setLoading(false);
     setName("");
     setAge("");
-  }, [name, age]);
+  }, [addDoggo, age, name]);
 
   return (
     <Container>

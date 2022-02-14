@@ -26,7 +26,7 @@ const DoggoProfile = ({
       swal("Something went wrong...");
     }
     setLoading(false);
-  }, [doggo]);
+  }, [deleteDoggo, doggo]);
 
   return (
     <Container>
