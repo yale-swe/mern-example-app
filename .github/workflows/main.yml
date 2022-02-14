@@ -23,17 +23,16 @@ jobs:
   test-and-build-server:
     name: Test & Build Server
     runs-on: ubuntu-latest
-    docker:
-      mongodb:
-        image: mongo:5.0.6
-        container_name: mongodb
-        restart: unless-stopped
-        environment:
-          - MONGO_INITDB_ROOT_USERNAME=user
-          - MONGO_INITDB_ROOT_PASSWORD=pass
-          - MONGO_INITDB_DATABASE=mydatabase
-        ports:
-          - 27017:27017
+    container:
+      image: mongo:5.0.6
+      container_name: mongodb
+      restart: unless-stopped
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=user
+        - MONGO_INITDB_ROOT_PASSWORD=pass
+        - MONGO_INITDB_DATABASE=mydatabase
+      ports:
+        - 27017:27017
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
