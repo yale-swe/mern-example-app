@@ -25,7 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mongo:5.0.6
-      container_name: mongodb
       restart: unless-stopped
       environment:
         - MONGO_INITDB_ROOT_USERNAME=user
