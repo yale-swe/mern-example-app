@@ -7,6 +7,9 @@
   "license": "MIT",
   "scripts": {
     "clean:all": "rm -rf node_modules && cd server && rm -rf node_modules && cd ../client && rm -rf node_modules",
-    "install:all": "yarn && cd server && yarn && cd ../client && yarn"
+    "install:all": "yarn && cd server && yarn && cd ../client && yarn",
+    "dev:env": "docker-compose up",
+    "dev:client": "cd client && yarn start",
+    "dev:server": "cd server && yarn dev"
   }
 }
