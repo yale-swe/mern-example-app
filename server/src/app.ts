@@ -1,9 +1,9 @@
 import cors from "cors";
 import express from "express";
-import { isDevelopment, isTest } from "./utils/environment";
+import { isCI, isDevelopment, isTest } from "./utils/environment";
 import routes from "./routes";
 
-const bypassCors = isDevelopment() || isTest();
+const bypassCors = isCI() || isDevelopment() || isTest();
 const allowList = new Set(["http://localhost:3000"]);
 
 const corsOptions = {

@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main]
 env:
-  CI: true
+  NODE_ENV: ci
 jobs:
   test-and-build-client:
     name: Test & Build Client
