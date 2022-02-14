@@ -1,7 +1,7 @@
 import request from "supertest";
-import app from "../src/app";
+import app from "../app";
 import { connectMongoose, disconnectMongoose } from "../testUtils/mongoose";
-import { Doggo } from "../src/models";
+import { Doggo } from "../models";
 
 describe("Doggos Tests", () => {
   let testDoggos: typeof Doggo[] = [];
