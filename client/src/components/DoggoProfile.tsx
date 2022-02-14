@@ -1,3 +1,4 @@
+import Button from "@mui/material/Button";
 import styled from "styled-components";
 import { Doggo } from "../types";
 
@@ -7,6 +8,7 @@ const DoggoProfile = ({ doggo }: { doggo: Doggo }) => {
       <ProfileImage src={doggo.imageUrl} alt="doggo-profile-image" />
       <Name>{doggo.name}</Name>
       <Age>age {doggo.age}</Age>
+      <Button color="error">Delete Doggo</Button>
     </Container>
   );
 };
@@ -30,7 +32,7 @@ const Name = styled.h3`
 
 const Age = styled.p`
   color: #ffffff;
-  margin: 0px;
+  margin: 0px 0px 5px 0px;
 `;
 
 export default DoggoProfile;
