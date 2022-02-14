@@ -2,16 +2,18 @@ import axios from "axios";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Doggo } from "./types";
+import DoggoProfile from "./components/DoggoProfile";
 import SWELogo from "./assets/logo.png";
 
 const App = () => {
   const [doggos, setDoggos] = useState<Doggo[]>([]);
 
   useEffect(() => {
-    axios.get<{ doggos: Doggo[] }>("http://localhost:4000/doggo").then((res) => {
-      console.log(res)
-      setDoggos(res.data.doggos);
-    });
+    axios
+      .get<{ doggos: Doggo[] }>("http://localhost:4000/doggo")
+      .then((res) => {
+        setDoggos(res.data.doggos);
+      });
   }, []);
 
   return (
@@ -27,6 +29,11 @@ const App = () => {
           to a Node REST API.
         </Text>
       </Description>
+      <DoggosContainer>
+        {doggos.map((doggo, i) => (
+          <DoggoProfile doggo={doggo} key={i} />
+        ))}
+      </DoggosContainer>
     </Container>
   );
 };
@@ -36,7 +43,9 @@ const Container = styled.div`
   min-height: 100vh;
   background: #121212;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 120px;
 `;
 
 const Description = styled.div`
@@ -60,6 +69,14 @@ const Text = styled.p`
 const Logo = styled.img`
   width: 150px;
   height: 150px;
+`;
+
+const DoggosContainer = styled.div`
+  margin-top: 60px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 export default App;
