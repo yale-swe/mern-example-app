@@ -6,6 +6,7 @@ on:
     branches: [main]
 env:
   NODE_ENV: ci
+  CI: true
 jobs:
   test-and-build-client:
     name: Test & Build Client
