@@ -1,8 +1,35 @@
+import axios from "axios";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import TextField from "@mui/material/TextField";
+import { useCallback, useState } from "react";
+import swal from "sweetalert";
 
 const DoggoForm = () => {
+  const [name, setName] = useState<string>("");
+  const [age, setAge] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const createDoggo = useCallback(async () => {
+    if (!name)
+      return swal({ text: "Please give your doggo a name.", icon: "warning" });
+    else if (!age)
+      return swal({ text: "Please give your doggo an age.", icon: "warning" });
+
+    setLoading(true);
+    try {
+      const { data } = await axios.post("http://localhost:4000/doggo", {
+        name,
+        age: parseInt(age),
+      });
+    } catch (_e) {
+      swal("Something went wrong...");
+    }
+    setLoading(false);
+    setName("");
+    setAge("");
+  }, [name, age]);
+
   return (
     <Container>
       <TitleText>Create a doggo</TitleText>
@@ -10,21 +37,28 @@ const DoggoForm = () => {
         id="outlined-basic"
         label="Doggo Name"
         variant="outlined"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
         style={{ marginBottom: 20 }}
       />
       <TextField
         id="outlined-basic"
         label="Doggo Age"
         variant="outlined"
+        type="number"
+        value={age}
+        onChange={(e) => setAge(e.target.value)}
         style={{ marginBottom: 30 }}
       />
-      <Button variant="contained">Create</Button>
+      <Button variant="contained" disabled={loading} onClick={createDoggo}>
+        Create
+      </Button>
     </Container>
   );
 };
 
 const Container = styled.div`
-  margin-top: 60px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
