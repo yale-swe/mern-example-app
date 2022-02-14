@@ -43,6 +43,6 @@ jobs:
       - name: Install Dependencies
         run: yarn install:server
       - name: Run Tests
-        run: yarn test:server
+        run: MONGO_URI=mongodb://user:pass@mongodb:27017/mydatabase?authSource=admin yarn test:server
       - name: Build
         run: yarn build:server
