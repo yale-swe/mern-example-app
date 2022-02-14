@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:yale-swe/mern-example-app.git",
   "author": "wu-json",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "install:all": "cd server && yarn && cd ../client && yarn && echo hi"
+  }
 }
