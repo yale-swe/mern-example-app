@@ -11,6 +11,11 @@ The MERN stack is an extremely popular development stack, and is composed of the
 
 This application is a MERN-stack application written in TypeScript. It allows you to create and delete Doggos! Run this app locally and experiment to learn the stack better. If you also want to copy this app as the base code for your project, feel free to do so!
 
+<img width="1411" alt="Screen Shot 2022-02-13 at 9 56 36 PM" src="https://user-images.githubusercontent.com/45532884/153793783-e5b742b2-4731-4155-b6aa-aa42c039cb94.png">
+
+<img width="508" alt="Screen Shot 2022-02-13 at 9 56 46 PM" src="https://user-images.githubusercontent.com/45532884/153793792-155a49e1-b193-4935-9e6b-baec0b99bc96.png">
+
+
 ## Running This App Locally
 
 To run this app locally, there are some prerequisites:
