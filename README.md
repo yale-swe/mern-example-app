@@ -22,7 +22,7 @@ This application is a MERN-stack application written in TypeScript. It allows yo
 To run this app locally, there are some prerequisites:
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
-- [Node v16.13.2](https://nodejs.org/en/)
+- [Node v16.14](https://nodejs.org/en/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
 
 Once you installed all the stuff above, follow these directions:
