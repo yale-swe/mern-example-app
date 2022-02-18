@@ -38,3 +38,4 @@ After completing the steps above, you should be able to go to `http://localhost:
 
 We have also provided a video of one of our walkthrough sessions of this codebase below.
 
+[![MERN Stack Walkthrough](https://user-images.githubusercontent.com/45532884/154608096-ab88dacd-f8e3-4dbf-8261-8ef4f8d77afc.png)](https://www.youtube.com/watch?v=7e191pUD0ks "MERN Stack Walkthrough")
