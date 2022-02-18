@@ -33,3 +33,8 @@ Once you installed all the stuff above, follow these directions:
 4. Open another terminal window and run `yarn dev:client`. This wll serve the client on port `3000`.
 
 After completing the steps above, you should be able to go to `http://localhost:3000` on your browser and see the app. Have fun making doggos!
+
+## Overview
+
+We have also provided a video of one of our walkthrough sessions of this codebase below.
+
